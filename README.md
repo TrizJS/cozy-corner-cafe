@@ -35,13 +35,6 @@ MCP Setup Included
 
 ---
 
- Image Generation Notes
-AI image generation was attempted using Gemini image models via nano-banana MCP.  
-During development, image generation was blocked due to:
-- Gemini model availability changes
-- Free-tier API quota limitations
-
-Per assignment troubleshooting guidance, **professional fallback images** were used while documenting the AI generation attempts and MCP setup process.
 
 All images are:
 - Properly integrated into React components
