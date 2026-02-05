@@ -56,3 +56,41 @@ Security
 - No secrets are exposed in the repository
 
 An example environment file is provided for reference:
+
+---
+
+ Deployment
+The site is deployed using **Netlify** and loads without errors.
+
+Live Site URL:  
+ **(https://cozy-corner-cafe-trizjs.netlify.app/)**
+
+---
+
+ Repository
+GitHub Repository:  
+ **[Add GitHub repo URL here]**
+
+---
+Responsiveness
+The site was tested across:
+- Desktop browsers
+- Mobile viewport sizes
+- Responsive images and layout scaling
+
+---
+
+Assignment Context
+This project was built for a course module emphasizing:
+- JAMstack architecture
+- Secure API usage
+- AI-assisted development workflows
+- Honest documentation and troubleshooting
+
+---
+
+Author
+**Tristan**  
+Digital Media – Web & Interactive Media  
+University of Central Florida
+
