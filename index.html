@@ -40,22 +40,22 @@
         <h2 class="section-title">Why Choose Us?</h2>
         <div class="features">
             <div class="feature-card">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop"
-                     alt="Freshly brewed latte with artistic foam design viewed from above"
+                <img src="images/menu-cappuccino.png"
+                     alt="Freshly brewed cappuccino with artistic latte art"
                      class="feature-card-img" loading="lazy">
                 <h3>Freshly Roasted</h3>
                 <p>Our coffee beans are roasted in small batches to ensure the freshest, most flavorful cup every time you visit.</p>
             </div>
             <div class="feature-card">
-                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=600&h=400&fit=crop"
-                     alt="Assortment of freshly baked pastries and bread on display"
+                <img src="images/menu-cinnamon-roll.png"
+                     alt="Freshly baked cinnamon roll with cream cheese frosting"
                      class="feature-card-img" loading="lazy">
                 <h3>Homemade Treats</h3>
                 <p>From flaky croissants to decadent cakes, all our pastries are baked fresh daily in our kitchen.</p>
             </div>
             <div class="feature-card">
-                <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&h=400&fit=crop"
-                     alt="Comfortable cafe workspace with laptop and coffee on a wooden table"
+                <img src="images/contact-cafe.png"
+                     alt="Cozy reading nook with armchair, books, and warm Edison bulb lighting"
                      class="feature-card-img" loading="lazy">
                 <h3>Cozy Atmosphere</h3>
                 <p>Sink into our comfortable seating, enjoy free WiFi, and stay as long as you like in our welcoming space.</p>
@@ -76,6 +76,47 @@
                 <div class="testimonial-card">
                     <p class="testimonial-text">"We held our book club meeting here and everyone loved it. Great coffee, delicious snacks, and the perfect ambiance for conversation."</p>
                     <p class="testimonial-author">- Maria K.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="behind-scenes">
+            <h2 class="section-title">Behind the Scenes</h2>
+            <p class="behind-scenes-intro">Take a peek at the passion and care that goes into every cup and every bite.</p>
+            <div class="carousel">
+                <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide" onclick="changeSlide(-1)">
+                    <span class="carousel-arrow">&#10094;</span>
+                </button>
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="images/feature-barista.png"
+                             alt="Barista carefully pouring steamed milk to create latte art">
+                        <p class="carousel-caption">Our baristas craft each drink with precision and care</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/feature-baker.png"
+                             alt="Baker pulling fresh cinnamon rolls from the oven">
+                        <p class="carousel-caption">Fresh pastries baked in-house every morning</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/feature-serving.png"
+                             alt="Friendly staff member serving coffee and croissant to a customer">
+                        <p class="carousel-caption">Serving our community with a smile</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/feature-espresso.png"
+                             alt="Espresso being extracted from professional coffee machine">
+                        <p class="carousel-caption">Premium espresso from our state-of-the-art machines</p>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-next" aria-label="Next slide" onclick="changeSlide(1)">
+                    <span class="carousel-arrow">&#10095;</span>
+                </button>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" aria-label="Go to slide 1" onclick="goToSlide(0)"></button>
+                    <button class="carousel-dot" aria-label="Go to slide 2" onclick="goToSlide(1)"></button>
+                    <button class="carousel-dot" aria-label="Go to slide 3" onclick="goToSlide(2)"></button>
+                    <button class="carousel-dot" aria-label="Go to slide 4" onclick="goToSlide(3)"></button>
                 </div>
             </div>
         </section>
@@ -105,6 +146,39 @@
         function toggleMenu() {
             document.querySelector('.nav-links').classList.toggle('active');
         }
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                dots[index].classList.remove('active');
+            });
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Auto-advance slides every 5 seconds
+        setInterval(() => changeSlide(1), 5000);
     </script>
 </body>
 </html>
