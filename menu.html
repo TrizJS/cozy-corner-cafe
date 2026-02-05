@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Cozy Corner Cafe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Cozy Corner Cafe</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="section-title">Our Menu</h1>
+
+        <section class="menu-category">
+            <h2>Coffee</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Espresso</h3>
+                        <span class="price">$3.00</span>
+                    </div>
+                    <p>Rich and bold single or double shot of our house blend.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Americano</h3>
+                        <span class="price">$3.50</span>
+                    </div>
+                    <p>Espresso with hot water for a smooth, full-bodied flavor.</p>
+                </div>
+                <div class="menu-item menu-item-featured">
+                    <span class="coziest-badge">Cozy Cravings</span>
+                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=250&fit=crop" alt="Cappuccino" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3>Cappuccino</h3>
+                        <span class="price">$4.50</span>
+                    </div>
+                    <p>Equal parts espresso, steamed milk, and velvety foam.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Latte</h3>
+                        <span class="price">$4.75</span>
+                    </div>
+                    <p>Espresso with steamed milk and a light layer of foam.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Mocha</h3>
+                        <span class="price">$5.25</span>
+                    </div>
+                    <p>Espresso with chocolate, steamed milk, and whipped cream.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Cold Brew</h3>
+                        <span class="price">$4.50</span>
+                    </div>
+                    <p>Smooth, slow-steeped coffee served over ice.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="menu-visual">
+            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=900&h=400&fit=crop"
+                 alt="Barista carefully preparing espresso drinks at the coffee machine"
+                 class="menu-visual-img" loading="lazy">
+            <p class="menu-visual-caption">Our baristas craft every drink with care and precision</p>
+        </div>
+
+        <section class="menu-category">
+            <h2>Tea</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Earl Grey</h3>
+                        <span class="price">$3.25</span>
+                    </div>
+                    <p>Classic black tea with bergamot citrus notes.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Green Tea</h3>
+                        <span class="price">$3.25</span>
+                    </div>
+                    <p>Light and refreshing organic green tea.</p>
+                </div>
+                <div class="menu-item menu-item-featured">
+                    <span class="coziest-badge">Cozy Cravings</span>
+                    <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=400&h=250&fit=crop" alt="Chai Latte" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3>Chai Latte</h3>
+                        <span class="price">$4.75</span>
+                    </div>
+                    <p>Spiced tea blend with steamed milk.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Herbal Infusion</h3>
+                        <span class="price">$3.50</span>
+                    </div>
+                    <p>Caffeine-free blend of chamomile, mint, or rooibos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-category">
+            <h2>Pastries & Treats</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Butter Croissant</h3>
+                        <span class="price">$3.75</span>
+                    </div>
+                    <p>Flaky, golden layers of buttery perfection.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Blueberry Muffin</h3>
+                        <span class="price">$3.50</span>
+                    </div>
+                    <p>Moist muffin bursting with fresh blueberries.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Chocolate Brownie</h3>
+                        <span class="price">$4.00</span>
+                    </div>
+                    <p>Rich, fudgy brownie with a crackly top.</p>
+                </div>
+                <div class="menu-item menu-item-featured">
+                    <span class="coziest-badge">Cozy Cravings</span>
+                    <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=400&h=250&fit=crop" alt="Cinnamon Roll" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3>Cinnamon Roll</h3>
+                        <span class="price">$4.25</span>
+                    </div>
+                    <p>Warm, gooey roll with cream cheese frosting.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="menu-visual">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=900&h=400&fit=crop"
+                 alt="Close-up of beautifully presented coffee and pastries on a cafe table"
+                 class="menu-visual-img" loading="lazy">
+            <p class="menu-visual-caption">Freshly baked pastries paired perfectly with our coffee</p>
+        </div>
+
+        <section class="menu-category">
+            <h2>Light Bites</h2>
+            <div class="menu-items">
+                <div class="menu-item menu-item-featured">
+                    <span class="coziest-badge">Cozy Cravings</span>
+                    <img src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=400&h=250&fit=crop" alt="Avocado Toast" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3>Avocado Toast</h3>
+                        <span class="price">$8.50</span>
+                    </div>
+                    <p>Sourdough topped with smashed avocado, cherry tomatoes, and seeds.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Breakfast Sandwich</h3>
+                        <span class="price">$7.75</span>
+                    </div>
+                    <p>Egg, cheese, and bacon on a toasted English muffin.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Yogurt Parfait</h3>
+                        <span class="price">$6.50</span>
+                    </div>
+                    <p>Greek yogurt layered with granola and seasonal fruits.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Grilled Cheese</h3>
+                        <span class="price">$7.00</span>
+                    </div>
+                    <p>Three-cheese blend on rustic sourdough bread.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Cozy Corner Cafe</p>
+        <p>123 Main Street, Downtown</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p style="margin-top: 1rem;">&copy; 2026 Cozy Corner Cafe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

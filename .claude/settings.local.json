@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "mcp__nano-banana__configure_gemini_token",
+      "mcp__nano-banana__generate_image",
+      "Bash(if not exist \"c:\\\\Users\\\\aweso\\\\cozy-corner-cafe\\\\images\" mkdir \"c:\\\\Users\\\\aweso\\\\cozy-corner-cafe\\\\images\")",
+      "mcp__nano-banana__get_configuration_status",
+      "Bash(powershell -Command:*)",
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "Bash(git init:*)",
+      "Bash(gh auth status:*)",
+      "Bash(gh auth login:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

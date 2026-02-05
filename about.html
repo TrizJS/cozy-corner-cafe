@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Cozy Corner Cafe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Cozy Corner Cafe</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="section-title">Our Story</h1>
+
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Cozy Corner Cafe was born from a simple dream: to create a place where
+                    the community could gather, connect, and enjoy exceptional coffee in a
+                    warm, inviting atmosphere.
+                </p>
+                <p>
+                    Founded in 2015 by coffee enthusiasts Sarah and Michael Chen, our cafe
+                    started as a small corner shop with just a handful of tables. Over the
+                    years, we've grown into a beloved neighborhood destination, but our
+                    commitment to quality and community remains unchanged.
+                </p>
+                <p>
+                    Every cup of coffee we serve is crafted with care, using beans sourced
+                    from sustainable farms around the world. Our baristas are passionate
+                    about their craft and take pride in creating the perfect drink for
+                    each customer.
+                </p>
+                <p>
+                    But we're more than just coffee. We're a gathering place for artists,
+                    students, professionals, and dreamers. We've hosted countless first
+                    dates, business meetings, study sessions, and reunion conversations
+                    within these walls.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=450&fit=crop"
+                     alt="Warm and inviting cafe interior with sunlight streaming through windows"
+                     loading="lazy">
+            </div>
+        </div>
+
+        <section class="about-gallery">
+            <div class="about-gallery-item">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop"
+                     alt="Friendly cafe staff working together behind the counter serving customers"
+                     loading="lazy">
+                <p>Our team bringing warmth to every visit</p>
+            </div>
+            <div class="about-gallery-item">
+                <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&h=400&fit=crop"
+                     alt="Customers relaxing and enjoying coffee inside the cozy cafe"
+                     loading="lazy">
+                <p>A cozy corner for everyone</p>
+            </div>
+        </section>
+
+        <section class="team-gallery">
+            <h2 class="section-title">Our Team at Work</h2>
+            <div class="carousel">
+                <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide" onclick="changeSlide(-1)">
+                    <span class="carousel-arrow">&#10094;</span>
+                </button>
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?w=800&h=500&fit=crop"
+                             alt="Barista carefully pouring steamed milk to create latte art">
+                        <p class="carousel-caption">Our baristas craft each drink with precision and care</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1556745753-b2904692b3cd?w=800&h=500&fit=crop"
+                             alt="Baker preparing fresh pastries in the kitchen">
+                        <p class="carousel-caption">Fresh pastries baked in-house every morning</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=800&h=500&fit=crop"
+                             alt="Friendly staff member serving coffee to a customer">
+                        <p class="carousel-caption">Serving our community with a smile</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=500&fit=crop"
+                             alt="Espresso being extracted from professional coffee machine">
+                        <p class="carousel-caption">Premium espresso from our state-of-the-art machines</p>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-next" aria-label="Next slide" onclick="changeSlide(1)">
+                    <span class="carousel-arrow">&#10095;</span>
+                </button>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" aria-label="Go to slide 1" onclick="goToSlide(0)"></button>
+                    <button class="carousel-dot" aria-label="Go to slide 2" onclick="goToSlide(1)"></button>
+                    <button class="carousel-dot" aria-label="Go to slide 3" onclick="goToSlide(2)"></button>
+                    <button class="carousel-dot" aria-label="Go to slide 4" onclick="goToSlide(3)"></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="values">
+            <h2 class="section-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h4>Quality First</h4>
+                    <p>We never compromise on the quality of our ingredients or service.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Community</h4>
+                    <p>We believe in building meaningful connections with our neighbors.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Sustainability</h4>
+                    <p>We're committed to environmentally responsible practices.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Warmth</h4>
+                    <p>Every guest is treated like family from the moment they walk in.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Cozy Corner Cafe</p>
+        <p>123 Main Street, Downtown</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p style="margin-top: 1rem;">&copy; 2026 Cozy Corner Cafe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                dots[index].classList.remove('active');
+            });
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Optional: Auto-advance slides every 5 seconds
+        setInterval(() => changeSlide(1), 5000);
+    </script>
+</body>
+</html>

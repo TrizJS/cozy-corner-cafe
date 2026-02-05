@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Corner Cafe - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Cozy Corner Cafe</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-headline">Coziest Cravings, Crafted Daily</h1>
+            <p class="hero-subheading">Freshly roasted coffee, homemade treats, and a warm corner waiting just for you. Your neighborhood escape from the everyday.</p>
+            <div class="hero-buttons">
+                <a href="menu.html" class="btn btn-primary">View Menu</a>
+                <a href="contact.html" class="btn btn-secondary">Visit Us</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop"
+                     alt="Freshly brewed latte with artistic foam design viewed from above"
+                     class="feature-card-img" loading="lazy">
+                <h3>Freshly Roasted</h3>
+                <p>Our coffee beans are roasted in small batches to ensure the freshest, most flavorful cup every time you visit.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=600&h=400&fit=crop"
+                     alt="Assortment of freshly baked pastries and bread on display"
+                     class="feature-card-img" loading="lazy">
+                <h3>Homemade Treats</h3>
+                <p>From flaky croissants to decadent cakes, all our pastries are baked fresh daily in our kitchen.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&h=400&fit=crop"
+                     alt="Comfortable cafe workspace with laptop and coffee on a wooden table"
+                     class="feature-card-img" loading="lazy">
+                <h3>Cozy Atmosphere</h3>
+                <p>Sink into our comfortable seating, enjoy free WiFi, and stay as long as you like in our welcoming space.</p>
+            </div>
+        </div>
+
+        <section class="testimonials">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The best coffee in town! I come here every morning before work. The staff remembers my order and always greets me with a smile."</p>
+                    <p class="testimonial-author">- Sarah M.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Such a cozy atmosphere for studying. The chai latte is amazing and the pastries are to die for. My favorite spot in the city!"</p>
+                    <p class="testimonial-author">- James L.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"We held our book club meeting here and everyone loved it. Great coffee, delicious snacks, and the perfect ambiance for conversation."</p>
+                    <p class="testimonial-author">- Maria K.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem; text-align: center;">
+            <h2 class="section-title">Visit Us Today</h2>
+            <p style="max-width: 600px; margin: 0 auto 2rem;">
+                Whether you're looking for your morning espresso, a quiet place to work,
+                or a cozy spot to catch up with friends, Cozy Corner Cafe is your perfect destination.
+            </p>
+            <a href="contact.html" class="btn">Find Our Location</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Cozy Corner Cafe</p>
+        <p>123 Main Street, Downtown</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p style="margin-top: 1rem;">&copy; 2026 Cozy Corner Cafe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
