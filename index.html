@@ -121,6 +121,37 @@
             </div>
         </section>
 
+        <section id="reviews">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div id="reviews-list"></div>
+
+            <form id="review-form" novalidate>
+                <h3 class="review-form-title">Leave a Review</h3>
+                <div class="form-group">
+                    <label for="review-name">Your Name</label>
+                    <input type="text" id="review-name" placeholder="e.g. Jane D." maxlength="50">
+                    <span class="field-error" id="error-name" role="alert"></span>
+                </div>
+                <div class="form-group">
+                    <label id="rating-label">Your Rating</label>
+                    <div class="star-picker" role="radiogroup" aria-labelledby="rating-label">
+                        <span class="star-option" data-value="1" role="radio" aria-checked="false" aria-label="1 star"  tabindex="0">★</span>
+                        <span class="star-option" data-value="2" role="radio" aria-checked="false" aria-label="2 stars" tabindex="-1">★</span>
+                        <span class="star-option" data-value="3" role="radio" aria-checked="false" aria-label="3 stars" tabindex="-1">★</span>
+                        <span class="star-option" data-value="4" role="radio" aria-checked="false" aria-label="4 stars" tabindex="-1">★</span>
+                        <span class="star-option" data-value="5" role="radio" aria-checked="false" aria-label="5 stars" tabindex="-1">★</span>
+                    </div>
+                    <span class="field-error" id="error-rating" role="alert"></span>
+                </div>
+                <div class="form-group">
+                    <label for="review-text">Your Review</label>
+                    <textarea id="review-text" placeholder="Tell us about your experience..."></textarea>
+                    <span class="field-error" id="error-text" role="alert"></span>
+                </div>
+                <button type="submit" class="btn review-submit-btn">Submit Review</button>
+            </form>
+        </section>
+
         <section style="margin-top: 4rem; text-align: center;">
             <h2 class="section-title">Visit Us Today</h2>
             <p style="max-width: 600px; margin: 0 auto 2rem;">
@@ -179,6 +210,155 @@
 
         // Auto-advance slides every 5 seconds
         setInterval(() => changeSlide(1), 5000);
+
+        // Customer Reviews
+        const seedReviews = [
+            { name: 'Emma R.',  rating: 5, text: 'Hands down the best latte I\'ve ever had. The atmosphere is so warm and inviting — I could spend hours here!' },
+            { name: 'David T.', rating: 5, text: 'The cinnamon rolls are absolutely incredible, fresh out of the oven every morning. Worth every penny!' },
+            { name: 'Priya N.', rating: 4, text: 'Great spot for remote work. Fast WiFi, excellent cold brew, and the staff is always friendly and welcoming.' },
+        ];
+
+        function renderStars(rating) {
+            const r = Math.min(5, Math.max(0, Math.round(rating) || 0));
+            const filled = '★'.repeat(r);
+            const empty  = '☆'.repeat(5 - r);
+            return `<div class="review-stars" aria-label="${r} out of 5 stars"><span aria-hidden="true">${filled}${empty}</span></div>`;
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        const reviewsList = document.getElementById('reviews-list');
+
+        function renderReviews(items) {
+            reviewsList.innerHTML = items.map(review => `
+                <article class="review-card">
+                    ${renderStars(review.rating)}
+                    <p class="review-text">"${escapeHtml(review.text)}"</p>
+                    <footer class="review-author">— ${escapeHtml(review.name)}</footer>
+                </article>
+            `).join('');
+        }
+
+        const STORAGE_KEY = 'cozy-corner-reviews';
+
+        function loadReviews() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (!saved) return [...seedReviews];
+                const parsed = JSON.parse(saved);
+                return Array.isArray(parsed) ? parsed : [...seedReviews];
+            } catch {
+                return [...seedReviews];
+            }
+        }
+
+        function saveReviews() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+            } catch {
+                // Quota exceeded or storage unavailable (e.g. private browsing)
+            }
+        }
+
+        let reviews = loadReviews();
+        renderReviews(reviews);
+
+        // Star picker
+        let selectedRating = 0;
+        const starOptions = document.querySelectorAll('.star-option');
+
+        function updateStarDisplay(highlightUpTo) {
+            starOptions.forEach(s => {
+                s.style.color = parseInt(s.dataset.value) <= highlightUpTo
+                    ? 'var(--secondary-color)'
+                    : '#ccc';
+            });
+        }
+
+        function setSelectedRating(n) {
+            selectedRating = n;
+            starOptions.forEach((s, i) => {
+                const val = parseInt(s.dataset.value);
+                s.setAttribute('aria-checked', n > 0 && val === n ? 'true' : 'false');
+                s.setAttribute('tabindex', (n > 0 ? val === n : i === 0) ? '0' : '-1');
+            });
+            updateStarDisplay(n);
+        }
+
+        starOptions.forEach(star => {
+            star.addEventListener('mouseenter', () => updateStarDisplay(parseInt(star.dataset.value)));
+            star.addEventListener('mouseleave', () => updateStarDisplay(selectedRating));
+
+            star.addEventListener('click', () => {
+                setSelectedRating(parseInt(star.dataset.value));
+                errorRating.textContent = '';
+                starPicker.classList.remove('invalid');
+            });
+
+            star.addEventListener('keydown', e => {
+                const idx = parseInt(star.dataset.value) - 1;
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    star.click();
+                } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (idx < 4) {
+                        star.setAttribute('tabindex', '-1');
+                        starOptions[idx + 1].setAttribute('tabindex', '0');
+                        starOptions[idx + 1].focus();
+                    }
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (idx > 0) {
+                        star.setAttribute('tabindex', '-1');
+                        starOptions[idx - 1].setAttribute('tabindex', '0');
+                        starOptions[idx - 1].focus();
+                    }
+                }
+            });
+        });
+
+        // Cached form references
+        const reviewForm  = document.getElementById('review-form');
+        const nameInput   = document.getElementById('review-name');
+        const textInput   = document.getElementById('review-text');
+        const starPicker  = document.querySelector('.star-picker');
+        const errorName   = document.getElementById('error-name');
+        const errorRating = document.getElementById('error-rating');
+        const errorText   = document.getElementById('error-text');
+
+        // Clear errors on input
+        nameInput.addEventListener('input', () => { errorName.textContent  = ''; nameInput.classList.remove('invalid'); });
+        textInput.addEventListener('input', () => { errorText.textContent  = ''; textInput.classList.remove('invalid'); });
+
+        // Form submission
+        reviewForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const name   = nameInput.value.trim();
+            const text   = textInput.value.trim();
+            const rating = selectedRating;
+
+            // Clear all errors first so role="alert" re-announces on repeated failed submits
+            errorName.textContent = errorRating.textContent = errorText.textContent = '';
+            nameInput.classList.remove('invalid');
+            textInput.classList.remove('invalid');
+            starPicker.classList.remove('invalid');
+
+            let valid = true;
+            if (!name)        { errorName.textContent   = 'Please enter your name.';      nameInput.classList.add('invalid');  valid = false; }
+            if (rating === 0) { errorRating.textContent = 'Please select a star rating.'; starPicker.classList.add('invalid'); valid = false; }
+            if (!text)        { errorText.textContent   = 'Please write your review.';    textInput.classList.add('invalid');  valid = false; }
+            if (!valid) return;
+
+            reviews.push({ name, rating, text });
+            saveReviews();
+            renderReviews(reviews);
+
+            reviewForm.reset();
+            setSelectedRating(0);
+        });
     </script>
 </body>
 </html>

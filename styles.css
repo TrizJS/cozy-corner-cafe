@@ -278,6 +278,97 @@ main {
     text-align: right;
 }
 
+/* Customer Reviews */
+#reviews {
+    margin-top: 4rem;
+    padding: 3rem 0;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+}
+
+#reviews-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+    margin-bottom: 3rem;
+}
+
+.review-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.review-stars {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+}
+
+.review-text {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.review-author {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-align: right;
+    font-style: normal;
+}
+
+#review-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.review-form-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.star-picker {
+    display: flex;
+    gap: 0.25rem;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star-option {
+    transition: color 0.15s ease;
+}
+
+.review-submit-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.field-error {
+    display: block;
+    color: #c0392b;
+    font-size: 0.85rem;
+    margin-top: 0.35rem;
+    min-height: 1.2em;
+}
+
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: #c0392b;
+}
+
+.star-picker.invalid {
+    outline: 2px solid #c0392b;
+    border-radius: 4px;
+}
+
 /* About Page */
 .about-content {
     display: grid;
