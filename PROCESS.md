@@ -8,4 +8,4 @@ The self-review process consistently caught edge-case issues. For example, durin
 
 Compared to CLI workflows, using Claude Web felt more visual and iterative. It was easier to stay focused on small improvements without managing terminal context. However, debugging sometimes required more explicit prompting.
 
-I would use micro-iteration and self-review for interactive UI features, form handling, and state management logic. For simple static styling changes, it may be unnecessary. Overall, this workflow reinforced the importance of disciplined iteration and reviewing AI-generated code critically instead of accepting it at face value.
+I would use micro-iteration and self-review for interactive UI features, form handling, and state management logic. For simple static styling changes, it may be unnecessary. 
