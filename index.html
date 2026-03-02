@@ -210,60 +210,20 @@
 
         // Auto-advance slides every 5 seconds
         setInterval(() => changeSlide(1), 5000);
+    </script>
 
-        // Customer Reviews
+    <script type="module">
+        import { renderReviews, loadReviews, saveReviews, validateReview } from './src/reviews.js';
+
         const seedReviews = [
             { name: 'Emma R.',  rating: 5, text: 'Hands down the best latte I\'ve ever had. The atmosphere is so warm and inviting — I could spend hours here!' },
             { name: 'David T.', rating: 5, text: 'The cinnamon rolls are absolutely incredible, fresh out of the oven every morning. Worth every penny!' },
             { name: 'Priya N.', rating: 4, text: 'Great spot for remote work. Fast WiFi, excellent cold brew, and the staff is always friendly and welcoming.' },
         ];
 
-        function renderStars(rating) {
-            const r = Math.min(5, Math.max(0, Math.round(rating) || 0));
-            const filled = '★'.repeat(r);
-            const empty  = '☆'.repeat(5 - r);
-            return `<div class="review-stars" aria-label="${r} out of 5 stars"><span aria-hidden="true">${filled}${empty}</span></div>`;
-        }
-
-        function escapeHtml(str) {
-            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        }
-
         const reviewsList = document.getElementById('reviews-list');
-
-        function renderReviews(items) {
-            reviewsList.innerHTML = items.map(review => `
-                <article class="review-card">
-                    ${renderStars(review.rating)}
-                    <p class="review-text">"${escapeHtml(review.text)}"</p>
-                    <footer class="review-author">— ${escapeHtml(review.name)}</footer>
-                </article>
-            `).join('');
-        }
-
-        const STORAGE_KEY = 'cozy-corner-reviews';
-
-        function loadReviews() {
-            try {
-                const saved = localStorage.getItem(STORAGE_KEY);
-                if (!saved) return [...seedReviews];
-                const parsed = JSON.parse(saved);
-                return Array.isArray(parsed) ? parsed : [...seedReviews];
-            } catch {
-                return [...seedReviews];
-            }
-        }
-
-        function saveReviews() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
-            } catch {
-                // Quota exceeded or storage unavailable (e.g. private browsing)
-            }
-        }
-
-        let reviews = loadReviews();
-        renderReviews(reviews);
+        let reviews = loadReviews(seedReviews);
+        renderReviews(reviews, reviewsList);
 
         // Star picker
         let selectedRating = 0;
@@ -286,6 +246,15 @@
             });
             updateStarDisplay(n);
         }
+
+        // Cached form references
+        const reviewForm  = document.getElementById('review-form');
+        const nameInput   = document.getElementById('review-name');
+        const textInput   = document.getElementById('review-text');
+        const starPicker  = document.querySelector('.star-picker');
+        const errorName   = document.getElementById('error-name');
+        const errorRating = document.getElementById('error-rating');
+        const errorText   = document.getElementById('error-text');
 
         starOptions.forEach(star => {
             star.addEventListener('mouseenter', () => updateStarDisplay(parseInt(star.dataset.value)));
@@ -320,18 +289,9 @@
             });
         });
 
-        // Cached form references
-        const reviewForm  = document.getElementById('review-form');
-        const nameInput   = document.getElementById('review-name');
-        const textInput   = document.getElementById('review-text');
-        const starPicker  = document.querySelector('.star-picker');
-        const errorName   = document.getElementById('error-name');
-        const errorRating = document.getElementById('error-rating');
-        const errorText   = document.getElementById('error-text');
-
         // Clear errors on input
-        nameInput.addEventListener('input', () => { errorName.textContent  = ''; nameInput.classList.remove('invalid'); });
-        textInput.addEventListener('input', () => { errorText.textContent  = ''; textInput.classList.remove('invalid'); });
+        nameInput.addEventListener('input', () => { errorName.textContent = ''; nameInput.classList.remove('invalid'); });
+        textInput.addEventListener('input', () => { errorText.textContent = ''; textInput.classList.remove('invalid'); });
 
         // Form submission
         reviewForm.addEventListener('submit', e => {
@@ -346,15 +306,15 @@
             textInput.classList.remove('invalid');
             starPicker.classList.remove('invalid');
 
-            let valid = true;
-            if (!name)        { errorName.textContent   = 'Please enter your name.';      nameInput.classList.add('invalid');  valid = false; }
-            if (rating === 0) { errorRating.textContent = 'Please select a star rating.'; starPicker.classList.add('invalid'); valid = false; }
-            if (!text)        { errorText.textContent   = 'Please write your review.';    textInput.classList.add('invalid');  valid = false; }
-            if (!valid) return;
+            const errors = validateReview({ name, rating, text });
+            if (errors.name)   { errorName.textContent   = errors.name;   nameInput.classList.add('invalid'); }
+            if (errors.rating) { errorRating.textContent = errors.rating; starPicker.classList.add('invalid'); }
+            if (errors.text)   { errorText.textContent   = errors.text;   textInput.classList.add('invalid'); }
+            if (Object.keys(errors).length > 0) return;
 
             reviews.push({ name, rating, text });
-            saveReviews();
-            renderReviews(reviews);
+            saveReviews(reviews);
+            renderReviews(reviews, reviewsList);
 
             reviewForm.reset();
             setSelectedRating(0);
